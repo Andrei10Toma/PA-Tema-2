@@ -59,35 +59,35 @@ class Task {
                     person.mails.insert(mail);
                 }
             }
-            persons.insert(make_pair(i, person));
+            persons[i] = person;
         }
         fin.close();
     }
 
-    void DFS_rec(int node, vector<int> &visited, int connected_comp) {
+    void DFS_rec(int node, int *visited, int connected_comp) {
         visited[node] = connected_comp;
         temp_set_mails.insert(persons[node].mails.begin(),
             persons[node].mails.end());
         if (min_name.empty()) {
             min_name = persons[node].name;
         } else {
-            if (persons[node].name.compare(min_name) >= 0) {
+            if (persons[node].name.compare(min_name) <= 0) {
                 min_name = persons[node].name;
             }
         }
         int sz_node = adj[node].size(), i;
         for (i = 0; i < sz_node; ++i) {
-            if (visited[adj[node][i]] == -1) {
+            if (visited[adj[node][i]] == 0) {
                 DFS_rec(adj[node][i], visited, connected_comp);
             }
         }
     }
 
     int DFS(set<GoodPerson, ComparePersons> &final_person) {
-        vector<int> visited(n, -1);
-        int connected_comp = 0, i;
+        int visited[n] = {};
+        int connected_comp = 1, i;
         for (i = 0; i < n; ++i) {
-            if (visited[i] == -1) {
+            if (visited[i] == 0) {
                 temp_set_mails.clear();
                 min_name.clear();
                 DFS_rec(i, visited, connected_comp);
@@ -95,7 +95,7 @@ class Task {
                 connected_comp++;
             }
         }
-        return connected_comp;
+        return connected_comp - 1;
     }
 
     void adrese() {
@@ -105,16 +105,18 @@ class Task {
         fout << number_size << endl;
         set<GoodPerson, ComparePersons>::iterator iterator_person;
         set<string>::iterator iterator_mails;
+        stringstream solution;
         for (iterator_person = final_persons.begin();
             iterator_person != final_persons.end(); iterator_person++) {
-            fout << iterator_person->name << " " <<
-                iterator_person->mails.size() << endl;
+            solution << iterator_person->name << " "
+                << iterator_person->mails.size() << endl;
             for (iterator_mails = iterator_person->mails.begin();
                 iterator_mails != iterator_person->mails.end();
                 iterator_mails++) {
-                fout << *iterator_mails << endl;
+                solution << *iterator_mails << endl;
             }
         }
+        fout << solution.str();
         fout.close();
     }
 };
