@@ -55,7 +55,7 @@ class Task {
             for (j = 0; j < k; ++j) {
                 fin >> mail;
                 // if a person with the read email already exists an edge
-                // from person i to the person that has the email will be 
+                // from person i to the person that has the email will be
                 // created (the persons with the same mails will be connected)
                 if (mail_person.find(mail) != mail_person.end()) {
                     adj[mail_person[mail]].push_back(i);
@@ -104,7 +104,7 @@ class Task {
                 // clear the data structures for another connected component
                 temp_set_mails.clear();
                 min_name.clear();
-                // DFS recursivity for the person to see the connected 
+                // DFS recursivity for the person to see the connected
                 // components
                 DFS_rec(i, visited, connected_comp);
                 // a connected component was found
