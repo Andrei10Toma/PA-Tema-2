@@ -29,4 +29,29 @@ minima pana la mal a fost gasita. Parcurgerea se face atata timp cat avem
 elemente in coada sau pana cand gigel ajunge la mal (se iese din matrice).
 
     adrese:
+    Pentru rezolvarea acestei probleme m-am folosit de o parcurgere DFS pe un
+graf creat din citire pentru a determina numarul de componente conexe si,
+implicit, pentru a elimina persoanele care au acelasi email. In citire, citesc
+numele fiecarei persoane pe rand si dupa fiecare mail al persoanei. Daca, deja
+exista o persoana care are mailul citit atunci se va adauga in graf o muchie de
+la nodul cu id-ul persoanei a carei tocmai i se citesc mailurile catre id-ul
+personei care deja are acel mail. Id-urile persoanelor vor fi de la 0 la n-1
+in ordinea citirii acecstora din fisier. Altfel, mailul care este prima oara
+citit este adaugat intr-o mapa de la mail la id-ul persoanei. La final dupa
+ce s-au citit toate informatile despre persoana aceasta este adaugata intr-o
+mapa de la id la structura de Persoana, care contine numele acesteia si setul de
+mailuri. Dupa ce graful a fost creat se intra intr-o parcurgere DFS a acestuia
+pentru a crea lista de persoane finala si pentru a gasi numarul de persoane
+distince din fisierul dat la input. Numararea acestor persoane se reduce la
+numararea componentelor conexe din graful creat. Pe langa parcurgerea DFS facuta
+se va crea si setul care contine mailurile persoanelor si numele minim din punct
+de vedere lexicografic al persoanelor care sunt conectate. Dupa ce se iese din
+recursivitatea de DFS insemna ca o componenta conexa a fost gasita, deci se
+incrementeaza numarul de componente conexe si se introduce in lista de persoane 
+finala persoana cu datele create prin efect lateral in parcurgerea DFS (lista de
+mailuri si numele persoanei). La final, se itereaza prin multimea de persoane
+creata din parcurgerea DFS si se afiseaza informatiile desprea acesteaa in
+fisierul de iesire.
+
+    lego:
     

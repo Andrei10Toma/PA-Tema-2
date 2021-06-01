@@ -1,5 +1,5 @@
 #include <bits/stdc++.h>
-#define NMAX 1001
+#define NMAX 1000
 using namespace std;
 
 struct Person {
