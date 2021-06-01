@@ -1,0 +1,32 @@
+Toma Andrei 321CB
+
+    poduri:
+    Pentru rezolvarea acestei probleme m-am folosit de o parcurgere BFS pe harta
+citita de la tastatura. Pentru a retine informatile pentru o anumita celula de
+pe mapa am folosit o structura numita Node in care este retinuta pozitia nodului
+in matrice si distanta minima parcursa pana la acesta. Se va initializa o
+matrice de distante si o matrice de noduri vizitate. Matricea nodurilor vizitate
+va avea pe pozitia de start valoarea true, iar matricea de distante va avea pe
+pozitia x si y coordonatele de start citite de la tastatura si ca distanta
+minima 0. Cu aceste informatii initiale se va intra intr-o parcurgere BFS pe
+matrice. Se va extrage primul element din coada si in functie de valoarea
+celulei de pe harta se vor face niste verificari. Daca valoarea nodului de pe
+harta este 'V' atunci Gigel se va putea deplasa doar in Nord(pos_x - 1) si in
+Sud (pos_x - 1). Daca mergand in Nord sau in Sud nu se iese din harta atunci
+si pozitia urmatoare este valida (!= '.') si nodul nu a mai fost vizitat atunci
+se va actualiza pozitia viitoare in matricea de distante, nodul urmator va fi
+marcat ca vizitat si se va adauga in coada. Altfel, in cazul in care se iese din
+harta atunci inseamna ca Gigel a ajuns la mal si implicit la o distanta minima
+facandu-se o parcurgere de tip BFS. Analog pentru cazul in care este 'O' pe
+harta, Gigel se va putea deplasa doar in Est (pos_y + 1) sau in Vest
+(pos_y - 1). Se vor face aceleasi verificari ca in cazul 'V' numai ca pentru
+pozitiile vitoare Vest si Est. De asemenea, daca se va iesi din matrice inseamna
+ca Gigel a gasit distanta minima pana la mal. Altfel, daca nodul de pe harta
+este de tip 'D' atunci se vor face verificarile de la pasii anteriori pentru
+'V' si 'O', diferenta fiind ca acum vom cauta pentru toate directiile posibile,
+Nord, Sud, Est, Vest. Daca se iese din matrice in vreo directie atunci distanta
+minima pana la mal a fost gasita. Parcurgerea se face atata timp cat avem
+elemente in coada sau pana cand gigel ajunge la mal (se iese din matrice).
+
+    adrese:
+    
