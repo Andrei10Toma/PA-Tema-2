@@ -54,4 +54,26 @@ creata din parcurgerea DFS si se afiseaza informatiile desprea acesteaa in
 fisierul de iesire.
 
     lego:
-    
+    Pentru aceasta problema am apelat la o solutie de tip backtracking cu
+programare dinamica. Voi genera toate combinarile de k luate cate n care contin
+pe 1 ca prima valoare. Cand se fac cei n pasi este apelata functia de check
+unde se afla partea de programare dinamica a acestei probleme. Am apelat la o
+solutie de programre dinamica cu ajutorul careia determin numarul minim de
+termeni necesari care insumati dau un numar i. Dimensiunea maxima a vectorului
+de de programare dinamica va fi t * {ultimul element din solution}, deoarece
+avem voie sa folosim maxim t termeni in formarea unei sume si ultimul element,
+fiind vorba de combinari, este cel mai mare. Cazul de baza este cel pentru
+numerele care fac parte din solution si acestea vor avea dp-ul pe pozitia lor 1.
+In caz general, pe pozitia dp[i] se va mentine numarul minim de termeni necesari
+care insumati ofera ca rezultat numarul i. Se parcurge print-un for marimea
+maxima posibila discutata mai sus si se vor face urmatorii pasi: un candidat
+bun pentru numarul minim de termeni este termenul cel mai mare din solution
+la care se divide numarul i. Astfel, dp[i] = i / domain[solution[j]]. Dupa
+aceasta verificare se cauta o varianta mai buna, daca exista. Se parcurge din
+nou vectorul care contine solutia generata si se recalculeaza minimul dintre
+dp[i] si 1 + dp[i - domain[solution[j]]], adica dintre valoarea curenta si o
+noua valoare care se compune dintr-o operatie in plus si ceva calculat la pasii
+anteriori. Dupa ce vectorul de programare dinamica este completat, se cauta
+secventa maxima de numere consecutive care se pot forma din mai putin de t
+operatii si in cazul in care este o solutie mai buna decat cea globala se
+actualizeaza cea globala.
