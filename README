@@ -95,3 +95,24 @@ actualizeaza cea globala.
         spatiala: O(t * k + n + k). Vectorul de solutie finala care poate avea o
         secventa maxima care sa contina toate elementele din suma maxima
         posibila si vectorii de solutie si domeniu.
+
+    retea:
+    Pentru rezolvarea acestei probleme am apelat la algoritmul lui Tarjan din
+laboratorul de pe ocw care determina punctele de articulatie din graf. Dupa
+aceea am mai parcurs graful cu DFS pentru fiecare punct de articulatie, pentru
+a le exclude din parcurgere pe fiecare in parte. Pentru fiecare punct de
+articulatie se intra in DFS cu primul nod care nu este chiar acel punct de
+articulatie si se calculeaza numarul de elemente care ar fi in fiecare
+componenta conexa ramasa daca s-ar exclude punctul de articulatie respectiv.
+Dupa ce se iese cu numarul de elemente ale unei componente conexe se adauga la
+punctul respectiv de articulatie ((n - {numarul_elemente_comp_conexa}) *
+{numarul_elemente_comp_conexa}). Pentru nodurile care nu sunt puncte de
+articulatie vor avea valoarea 2 * (n - 1), adica toate apelurile initiate catre
+el si toate apelurile initiate de el.
+    Complexitate:
+        temporala: O({numar_puncte_articulatie} * (n + m) + (n + m)). Se face o
+        parcurgere DFS pentru fiecare punct de articulatie si se mai face o
+        parcurgere DFS inainte care determina punctele de articulatie.
+        spatiala: O(6 * n + m). Spatiu ocupat de cei 3 vectori pentru Tarjan
+        (parent, found, low_link), vectorul pentru solutie(solution), graful
+        (n + m) si setul pentru punctele de articulatie (maxim n).
