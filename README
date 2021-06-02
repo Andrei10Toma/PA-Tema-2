@@ -27,6 +27,10 @@ este de tip 'D' atunci se vor face verificarile de la pasii anteriori pentru
 Nord, Sud, Est, Vest. Daca se iese din matrice in vreo directie atunci distanta
 minima pana la mal a fost gasita. Parcurgerea se face atata timp cat avem
 elemente in coada sau pana cand gigel ajunge la mal (se iese din matrice).
+    Complexitate: 
+        temporala: O(n * m) din citire
+        spatiala: O(3 * n * m) pentru alocare celor 3 matrici: distante, harta,
+        vizitate.
 
     adrese:
     Pentru rezolvarea acestei probleme m-am folosit de o parcurgere DFS pe un
@@ -52,6 +56,13 @@ finala persoana cu datele create prin efect lateral in parcurgerea DFS (lista de
 mailuri si numele persoanei). La final, se itereaza prin multimea de persoane
 creata din parcurgerea DFS si se afiseaza informatiile desprea acesteaa in
 fisierul de iesire.
+    Complexitate: 
+        temporala: O((n + {numar_pers_identice}) * k * log(k) 
+        * {numar_pers_identice} * log({numar_pers_identice})) (destul de greu
+        de zis ce complexitate e, nu stiu daca e bine :) ). M-am gandit ca e 
+        de la DFS cu inserarile sortate de mailuri si de persoane in setul
+        final.
+        spatiala: O(n + {numarul_total_de_mailuri_diferite}).
 
     lego:
     Pentru aceasta problema am apelat la o solutie de tip backtracking cu
@@ -77,3 +88,10 @@ anteriori. Dupa ce vectorul de programare dinamica este completat, se cauta
 secventa maxima de numere consecutive care se pot forma din mai putin de t
 operatii si in cazul in care este o solutie mai buna decat cea globala se
 actualizeaza cea globala.
+    Complexitate:
+        temporala: O(Combinari(k, n) * t * k * n). Numarul de combinari pentru
+        generarea sol posibile inmultit cu cea mai mare suma posibila si numarul
+        de elemente din solutii (programarea dinamica).
+        spatiala: O(t * k + n + k). Vectorul de solutie finala care poate avea o
+        secventa maxima care sa contina toate elementele din suma maxima
+        posibila si vectorii de solutie si domeniu.
